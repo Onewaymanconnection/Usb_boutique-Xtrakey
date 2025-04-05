@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Clé USB Xtraskey 12</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffe7;
+    }
+    .main-img {
+      width: 300px;
+      border-radius: 10px;
+      border: 2px solid #00ffe7;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 80px;
+      height: 80px;
+      border: 1px solid #00ffe7;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #00ffe7;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function changeMainImage(src) {
+      document.getElementById('mainImage').src = src;
+    }
+  </script>
+</head>
+<body>
+  <h1>Clé USB Xtraskey 12 - 30GB</h1>
+  <img id="mainImage" class="main-img" src="https://raw.githubusercontent.com/Onewaymanconnection/Usb_boutique-Xtrakey/main/images/usb12.jpg" alt="Clé USB 12">
+  <div class="gallery">
+    <img src="https://raw.githubusercontent.com/Onewaymanconnection/Usb_boutique-Xtrakey/main/images/usb12_1.jpg" onclick="changeMainImage(this.src)">
+    <img src="https://raw.githubusercontent.com/Onewaymanconnection/Usb_boutique-Xtrakey/main/images/usb12_2.jpg" onclick="changeMainImage(this.src)">
+    <img src="https://raw.githubusercontent.com/Onewaymanconnection/Usb_boutique-Xtrakey/main/images/usb12_3.jpg" onclick="changeMainImage(this.src)">
+  </div>
+  <p>Prix : 30.99 $ CAD</p>
+  <p>Expédition rapide via Amazon. Paiement sécurisé.</p>
+  <button onclick="location.href='https://buy.stripe.com/test_4gw5np7uP0NZeTu5kk'">Acheter avec carte (démo)</button>
+  <button onclick="location.href='facture_usb12.pdf'">Télécharger la facture PDF</button>
+</body>
+</html>
