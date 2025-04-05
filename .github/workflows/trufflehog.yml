@@ -1,6 +1,12 @@
 name: Scan Secrets with TruffleHog
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   trufflehog-scan:
@@ -18,5 +24,13 @@ jobs:
     - name: Install TruffleHog
       run: pip install trufflehog
 
-    - name: Run TruffleHog on latest commits
-      run: trufflehog git .
+    - name: Run TruffleHog and Save Report
+      run: |
+        mkdir -p reports
+        trufflehog --branch main --json . > reports/trufflehog_report.json
+
+    - name: Upload report as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: trufflehog-report
+        path: reports/trufflehog_report.json
