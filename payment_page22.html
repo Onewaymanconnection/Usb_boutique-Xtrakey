@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Clé USB Xtraskey 22</title>
+  <title>Clé USB Xtraskey 22 - 51GB</title>
   <style>
     body {
       background-color: #0f0f0f;
@@ -42,16 +42,42 @@
       font-size: 18px;
     }
   </style>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+function generatePDF(productName, price) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+  const today = new Date().toLocaleDateString();
+
+  doc.setFontSize(20);
+  doc.setTextColor(0, 255, 231);
+  doc.text("Facture OWMC", 20, 20);
+
+  doc.setFontSize(12);
+  doc.setTextColor(50, 50, 50);
+  doc.text("Produit : " + productName, 20, 40);
+  doc.text("Prix : " + price + " CAD", 20, 50);
+  doc.text("Date : " + today, 20, 60);
+  doc.text("Merci pour votre achat via OWMC.", 20, 80);
+
+  doc.save("facture_" + productName + ".pdf");
+}
+</script>
+
 </head>
 <body>
   <div class="product-container">
-    <img src="https://tse1.mm.bing.net/th?id=OIP.CLIS3OQtWGQTLUYILgKVuQHaE6&pid=Api" alt="Clé USB 22">
+    <img src="https://tse1.mm.bing.net/th?id=OIP.CLIS3OQtWGQTLUYILgKVuQHaE6&pid=Api" alt="Clé USB Xtraskey 22 - 51GB">
     <h1>Clé USB Xtraskey 22 - 51GB</h1>
     <p>Prix : 51.99 $ CAD</p>
     <p>Expédition rapide via Amazon. Paiement sécurisé.</p>
+
     <form action="https://buy.stripe.com/test_7sIaFwdlc9zG0zm9AA" method="GET">
       <button type="submit">Acheter avec carte (démo)</button>
     </form>
+
+    <button onclick="generatePDF('Clé USB Xtraskey 22 - 51GB', '51.99')">Télécharger la facture PDF</button>
   </div>
 </body>
 </html>
