@@ -1,21 +1,22 @@
 name: Scan Secrets with TruffleHog
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
-  scan:
-    name: Run TruffleHog on latest commits
+  trufflehog-scan:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-      - name: Run TruffleHog
-        uses: trufflesecurity/trufflehog@v3
-        with:
-          scanArguments: --since-commit=HEAD~50
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install TruffleHog
+      run: pip install trufflehog
+
+    - name: Run TruffleHog on latest commits
+      run: trufflehog git .
